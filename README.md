@@ -4,12 +4,6 @@
 
 <h1 align="center">BIM Pars 🚀</h1>
 
-<p align="center">
-  <a href="https://bimpars.com/Documentation#installation">
-    <img src="https://img.shields.io/github/v/release/bimpars/BIM-Pars?label=Download&style=for-the-badge&color=blue" alt="Installation">
-  </a>
-</p>
-
 ---
 
 ## 📌 About  
@@ -77,11 +71,8 @@ To use **BIM Pars**, you need a **free license key**.
 ## 🚀 Get Started  
 
 ### 🔹 Install the App  
-<p align="center">
-  <a href="https://bimpars.com/Documentation#installation">
-    <img src="https://img.shields.io/github/v/release/bimpars/BIM-Pars?label=Download&style=for-the-badge&color=blue" alt="Installation">
-  </a>
-</p>
+- [Install pyRevit](https://pyrevitlabs.notion.site/Install-pyRevit-98ca4359920a42c3af5c12a7c99a196d)  
+- [Install Extension](https://pyrevitlabs.notion.site/Install-Extensions-0753ab78c0ce46149f962acc50892491) 
 
 ### 📚 Documentation  
 - [User Guide](https://bimpars.com/Documentation)  
