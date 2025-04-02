@@ -121,7 +121,7 @@ BIM Pars is released under the **BIM Pars Custom License**.
 - ❌ You **must provide attribution** when distributing the software.  
 - ⚖️ This software is provided **"as is"**, with **no warranties**.  
 
-For full details, see the **[LICENSE](LICENSE)** .  
+For full details, see the **[LICENSE](LICENSE.md)** .  
 
 ---
 
