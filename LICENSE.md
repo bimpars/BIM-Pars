@@ -23,7 +23,7 @@ This license governs the use, modification, and distribution of the BIM Pars sou
 
 ## 3. **Attribution**
 1. Any use or redistribution of the Software must include the following attribution:
-   > "This software is based on BIM Pars, available at [https://bimpars.com]."
+   > "This software is based on BIM Pars, available at [BIM Pars](https://bimpars.com)."
 
 2. Contributions to the Software must also include appropriate attributions to contributors in the repository’s contribution records.
 
@@ -64,4 +64,4 @@ This license shall be governed by and construed in accordance with the laws of G
 
 ---
 
-If you have any questions or require further clarification, please contact us at [https://bimpars.com/Contact].
+If you have any questions or require further clarification, please contact us at [Contact](https://bimpars.com/Contact).
