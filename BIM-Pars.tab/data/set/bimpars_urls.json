@@ -1,0 +1,9 @@
+{
+    "BIM_Pars_Create_acount": "https://bimpars.com/Register",
+    "BIM_Pars_renew_key": "https://bimpars.com/Login",
+    "BIM_Pars_Documentation_config": "https://bimpars.com/bimpars_api_url_button_activation.json",
+    "BIM_Pars_Documentation": "https://bimpars.com/bimpars_api_urls.json",
+    "BIM_Pars_Seeds": "https://api.bimpars.com/api/License/CheckLicense?licenseKey={}",
+    "BIM _Pars_web": "https://bimpars.com",
+    "pyRevit_web": "https://pyrevitlabs.notion.site"
+}

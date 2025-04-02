@@ -1,0 +1,25 @@
+{
+    "scripts": {
+        "SCRIPT NAME 1": {
+            "group": "GROUP 1",
+            "tooltip": "YOUR DESCRIPTIN FOR SCRIPT 1 OR SIMPLY PLACE [None]",
+            "video_url": "URL OR None",
+            "documentation_url": "URL OR None",
+            "github_url": "URL OR None"
+        },
+        "SCRIPT NAME 2": {
+            "group": "GROUP 2",
+            "tooltip": "YOUR DESCRIPTIN FOR SCRIPT 2 OR SIMPLY PLACE [None]",
+            "video_url": "None",
+            "documentation_url": "None",
+            "github_url": "None"
+        },
+        "SCRIPT NAME 3": {
+            "group": "GROUP 2",
+            "tooltip": "YOUR DESCRIPTIN FOR SCRIPT 3 OR SIMPLY PLACE [None]",
+            "video_url": "None",
+            "documentation_url": "None",
+            "github_url": "None"
+        }
+    }
+}

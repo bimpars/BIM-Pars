@@ -1,0 +1,30 @@
+title:  
+  en_us: Pars
+  de_de: Pars
+  fa: پارس
+  ru: Парс
+  es_es: Pars
+  chinese_s: Pars
+  ko: 파르스
+
+tooltip:
+  en_us: A set of tools to simplify complex workflows by automating tasks
+  de_de: Eine Sammlung von Werkzeugen zur Vereinfachung komplexer Arbeitsabläufe durch Automatisierung von Aufgaben
+  fa: مجموعه‌ای از ابزارها برای ساده‌سازی جریان‌های کاری پیچیده با خودکارسازی وظایف
+  ru: Набор инструментов для упрощения сложных рабочих процессов с помощью автоматизации задач
+  es_es: Un conjunto de herramientas para simplificar flujos de trabajo complejos mediante la automatización de tareas
+  chinese_s: 一套通过自动化任务简化复杂工作流程的工具
+  ko: 작업 자동화를 통해 복잡한 작업 흐름을 단순화하는 도구 모음
+  
+help_url:
+  en_us: "https://www.bimpars.com"
+  de_de: "https://www.bimpars.com"
+  fa: "https://www.bimpars.com"
+  ru: "https://www.bimpars.com"
+  es_es: "https://www.bimpars.com"
+  chinese_s: "https://www.bimpars.com"
+  ko: 확장 "https://www.bimpars.com"
+
+author: M.Sc. Mohammad Sajjad Mortazavi
+ 
+

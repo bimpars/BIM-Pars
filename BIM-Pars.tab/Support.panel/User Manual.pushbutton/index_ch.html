@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Manual</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #eef1f5;
+        }
+
+        .banner {
+            width: 100%;
+            max-width: 840px;
+            height: 250px;
+            /* Ensures aspect ratio is maintained */
+            margin: 20px auto;
+            display: block;
+            border-radius: 10px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+
+
+        .section {
+            background: white;
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .section2 {
+            background: rgb(88, 57, 146);
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .links a {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px;
+            text-decoration: none;
+            background: rgb(128, 102, 177);
+            border-radius: 8px;
+            color: #f7f8fa;
+            font-weight: bold;
+            font-size: 18px;
+            transition: 0.3s;
+            margin: 10px auto;
+            max-width: 300px;
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+            border: none;
+            /* ✅ Removed border */
+        }
+
+        .links a img {
+            width: 36px;
+            height: 36px;
+            background: none;
+            /* ✅ Ensures no background */
+            border: none;
+            /* ✅ Ensures no border */
+            box-shadow: none;
+            /* ✅ Ensures no shadow */
+        }
+
+        .links a:hover {
+            background: #0073e6;
+            color: white;
+            transform: scale(1.05);
+        }
+
+        .links a img {
+            width: 24px;
+            height: 24px;
+        }
+
+        .video-list {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            padding-left: 20px;
+            /* Align videos to the left */
+        }
+
+        .video-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: #fff;
+            padding: 10px;
+            width: 90%;
+            max-width: 600px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            transition: 0.3s;
+        }
+
+        .video-item:hover {
+            transform: scale(1.03);
+        }
+
+        .video-item img {
+            width: 20px;
+            /* ✅ Made the video icon smaller */
+            height: 20px;
+        }
+
+        .video-item a {
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: bold;
+            color: #0073e6;
+        }
+
+        .video-item a:hover {
+            text-decoration: underline;
+        }
+
+        .border-separator {
+            border-bottom: 3px solid #ee06cf;
+            /* Thin light gray line */
+            margin: 10px 0;
+            /* Spacing above and below */
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="section">
+        <div class="video-list">
+            <a href="https://bimpars.com/"
+                style="display: block; margin: 10px 0; text-align: center; background-color: #4CAF50; color: white; padding: 10px; border-radius: 5px; text-decoration: none;">
+                <img src="assets/website.gif" alt="网站图标"
+                    style="width: 30px; height: 30px; vertical-align: middle; margin-right: 8px; border: none;">访问网站
+            </a>
+            <a href="https://bimpars.com/Documentation"
+                style="display: block; margin: 10px 0; text-align: center; background-color: #7a63e0; color: white; padding: 10px; border-radius: 5px; text-decoration: none;">
+                <img src="assets/document.png" alt="文档图标"
+                    style="width: 30px; height: 30px; vertical-align: middle; margin-right: 8px; border: none;">文档
+            </a>
+            <a href="https://bimpars.com/Contact"
+                style="display: block; margin: 10px 0; text-align: center; background-color: #ff6600; color: white; padding: 10px; border-radius: 5px; text-decoration: none;">
+                <img src="assets/contact.png" alt="联系图标"
+                    style="width: 30px; height: 30px; vertical-align: middle; margin-right: 8px; border: none;">联系我们
+            </a>
+            <a href="https://github.com/bimpars"
+                style="display: block; margin: 10px 0; text-align: center; background-color: #000000; color: white; padding: 10px; border-radius: 5px; text-decoration: none;">
+                <img src="assets/github.png" alt="GitHub 图标"
+                    style="width: 30px; height: 30px; vertical-align: middle; margin-right: 8px; border: none;">在 GitHub
+                上查看源代码
+            </a>
+            <a href="https://www.youtube.com/@Bimpars"
+                style="display: block; margin: 10px 0; text-align: center; background-color: #363636; color: white; padding: 10px; border-radius: 5px; text-decoration: none;">
+                <img src="assets/youtube.png" alt="YouTube 图标"
+                    style="width: 30px; height: 30px; vertical-align: middle; margin-right: 8px; border: none;">观看
+                YouTube 教程
+            </a>
+            <a href="https://bimpars.notion.site/1accffb0a9b6807480dee88d66f21c8a?v=1accffb0a9b68131b8fa000c1fcb579a"
+                style="display: block; margin: 10px 0; text-align: center; background-color: #0073e6; color: white; padding: 10px; border-radius: 5px; text-decoration: none;">
+                <img src="assets/notion.png" alt="Notion 图标"
+                    style="width: 30px; height: 30px; vertical-align: middle; margin-right: 8px; border: none;">在 Notion
+                查看更多详情
+            </a>
+            <a href="https://www.linkedin.com/in/sajjadmortazavi"
+                style="display: block; margin: 10px 0; text-align: center; background-color: #67bae7; color: white; padding: 10px; border-radius: 5px; text-decoration: none;">
+                <img src="assets/linkedin.png" alt="LinkedIn 图标"
+                    style="width: 30px; height: 30px; vertical-align: middle; margin-right: 8px; border: none;">创作者
+            </a>
+            <a href="https://bimpars.com/Terms"
+                style="display: block; margin: 10px 0; text-align: center; background-color: #ff0000; color: white; padding: 10px; border-radius: 5px; text-decoration: none;">
+                <img src="assets/terms.png" alt="使用条款图标"
+                    style="width: 30px; height: 30px; vertical-align: middle; margin-right: 8px; border: none;">使用条款
+            </a>
+            <a href="https://bimpars.com/PrivacyPolicy"
+                style="display: block; margin: 10px 0; text-align: center; background-color: #ff0055; color: white; padding: 10px; border-radius: 5px; text-decoration: none;">
+                <img src="assets/policy.png" alt="隐私政策图标"
+                    style="width: 30px; height: 30px; vertical-align: middle; margin-right: 8px; border: none;">隐私政策
+            </a>
+            <a href="https://bimpars.com/License"
+                style="display: block; margin: 10px 0; text-align: center; background-color: #e0aa63; color: white; padding: 10px; border-radius: 5px; text-decoration: none;">
+                <img src="assets/license.png" alt="软件许可证图标"
+                    style="width: 30px; height: 30px; vertical-align: middle; margin-right: 8px; border: none;">软件许可证
+            </a>
+        </div>
+
+</body>
+
+</html>
+
+</html>

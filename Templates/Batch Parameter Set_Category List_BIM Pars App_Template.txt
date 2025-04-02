@@ -1,0 +1,7 @@
+%CATEGORY_PARAM_VALUE#//
+r1_#c[Walls]_#p[TEST2_NUMBER]_#v[2]
+r2_#c[Walls]_#p[TEST3_BOOLEAN]_#v[1]
+r3_#c[Doors]_#p[TEST1_TEXT]_#v[VALU4]
+r4_#c[Doors]_#p[TEST2_NUMBER]_#v[5]
+r5_#c[Doors]_#p[TEST3_BOOLEAN]_#v[1]
+//
