@@ -528,7 +528,7 @@ def str_21(file_path):
             first_line = file.readline().strip()
 
             if first_line == "english":
-                return "My script"
+                return "My Script"
             elif first_line == "deutsch":
                 return "Mein Skript"
             elif first_line == "farsi":
@@ -593,6 +593,58 @@ def str_23(file_path):
                 return "错误"
             elif first_line == "korean":
                 return "오류"
+            else:
+                return "Unknown language"
+    except FileNotFoundError:
+        return "File not found."
+    except Exception as e:
+        return "An error occurred: {e}"
+    
+def str_24(file_path):
+    try:
+        with open(file_path, "r") as file:
+            first_line = file.readline().strip()
+
+            if first_line == "english":
+                return "AI Assist"
+            elif first_line == "deutsch":
+                return "KI-Assistent"
+            elif first_line == "farsi":
+                return "دستیار هوش مصنوعی"
+            elif first_line == "russian":
+                return "ИИ-помощник"
+            elif first_line == "spanish":
+                return "Asistente de IA"
+            elif first_line == "chinese":
+                return "AI助手"
+            elif first_line == "korean":
+                return "AI 도우미"
+            else:
+                return "Unknown language"
+    except FileNotFoundError:
+        return "File not found."
+    except Exception as e:
+        return "An error occurred: {e}"
+
+def str_25(file_path):
+    try:
+        with open(file_path, "r") as file:
+            first_line = file.readline().strip()
+
+            if first_line == "english":
+                return "AI-Powered Revit API Python Generator"
+            elif first_line == "deutsch":
+                return "KI-gestützter Revit API Python-Generator"
+            elif first_line == "farsi":
+                return "تولیدکننده پایتون API رویت با قدرت هوش مصنوعی"
+            elif first_line == "russian":
+                return "Генератор Python для Revit API на базе ИИ"
+            elif first_line == "spanish":
+                return "Generador de Python para API de Revit impulsado por IA"
+            elif first_line == "chinese":
+                return "由人工智能驱动的 Revit API Python 生成器"
+            elif first_line == "korean":
+                return "AI 기반 Revit API 파이썬 생성기"
             else:
                 return "Unknown language"
     except FileNotFoundError:
