@@ -2620,7 +2620,7 @@ class BIMPARS_APP(Form):
             sys.path.append(os.path.dirname(__file__))
             from sajdmo.scripts.py import execute_selected_file, pylist_delete, pylist_path_run
             from structure.root import wurl_path, dir_path, py_icon, python_back, py_back, pylist_path, pydir_path, lan_path
-            from UI.strings_script_maneger import str_1, str_2, str_3, str_4, str_5, str_6, str_7, str_8, str_9, str_10, str_11, str_12, str_13, str_14, str_15, str_16, str_17, str_18, str_19, str_20, str_21, str_22
+            from UI.strings_script_maneger import str_1, str_2, str_3, str_4, str_5, str_6, str_7, str_8, str_9, str_10, str_11, str_12, str_13, str_14, str_15, str_16, str_17, str_18, str_19, str_20, str_21, str_22, str_24, str_25
             from UI.dir import detect_directory
             from UI.url import parsweb
 
@@ -2636,7 +2636,7 @@ class BIMPARS_APP(Form):
                     # [UI:FORM_INIT] Initialize the form
                     self.Text = str_1(lan)
                     self.Width = 700
-                    self.Height = 600
+                    self.Height = 700
                     self.BackColor = Color.White
                     self.doc = doc
                     self.CenterToScreen()
@@ -2680,6 +2680,15 @@ class BIMPARS_APP(Form):
                     self.myscripts_group_box.Top = 425  
                     self.Controls.Add(self.myscripts_group_box)  
 
+                    # [UI:AI_ASSIST_GROUP] Create a GroupBox for AI Assist
+                    self.ai_group_box = GroupBox()
+                    self.ai_group_box.Text = str_24(lan)
+                    self.ai_group_box.Width = 600  
+                    self.ai_group_box.Height = 75 
+                    self.ai_group_box.Left = 40  
+                    self.ai_group_box.Top = 540
+                    self.Controls.Add(self.ai_group_box)
+
                     # [UI:RUN_BUTTON] Add the run button
                     self.run_button = Button()
                     self.run_button.Text = str_7(lan)
@@ -2709,6 +2718,17 @@ class BIMPARS_APP(Form):
                     self.delete_button.Top = 20
                     self.delete_button.Click += self.delete_button_clicked
                     self.myscripts_group_box.Controls.Add(self.delete_button)
+
+                    # [UI:REVIT_API_AI_BUTTON] Add the revit API doc AI button
+                    self.revit_apidoc_ai_button = Button()
+                    self.revit_apidoc_ai_button.Text = str_25(lan)
+                    self.revit_apidoc_ai_button.BackColor = Color.LightYellow
+                    self.revit_apidoc_ai_button.Width = 280
+                    self.revit_apidoc_ai_button.Height = 30
+                    self.revit_apidoc_ai_button.Left = 10
+                    self.revit_apidoc_ai_button.Top = 20
+                    self.revit_apidoc_ai_button.Click += self.revit_apidoc_ai_button_clicked
+                    self.ai_group_box.Controls.Add(self.revit_apidoc_ai_button)
 
                     # [UI:LINE_LABELS] Add line labels for visual separation
                     self.line2Label = Label()
@@ -2926,6 +2946,14 @@ class BIMPARS_APP(Form):
                     except Exception as e:
                         pass
                     self.Show()
+
+                # [SCRIPT:REVIT_API_AI_BUTTON] Open the revit API do AI URL
+                def revit_apidoc_ai_button_clicked(self, sender, e):
+                    """
+                    Opens a URL when the button is clicked.
+                    """
+                    url = "https://www.revitapidocs.com/code/"
+                    webbrowser.open(url)
 
             # [SCRIPT:INIT_FORM] Initialize and show the form
             doc = DocumentManager.Instance.CurrentDBDocument
