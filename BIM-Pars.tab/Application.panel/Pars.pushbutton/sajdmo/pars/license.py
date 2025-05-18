@@ -3,13 +3,18 @@
 #license.py
 
 import clr 
-clr.AddReference('System.Net.Http')
+
+clr.AddReference("System.Net.Http")
+clr.AddReference("System.Net")
+clr.AddReference("System")
+clr.AddReference("System.Core")
+clr.AddReference("System.Security")
+
 from System.Net.Http import HttpClient
 import base64
 from datetime import datetime
 import json
 
-clr.AddReference('System.Net.Http')
 from System.Net.Http import HttpClient, HttpRequestMessage, HttpMethod
 from System.Net.Http.Headers import HttpRequestHeaders
 from System.Net import ServicePointManager, SecurityProtocolType
