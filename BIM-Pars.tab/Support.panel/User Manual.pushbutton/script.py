@@ -3,6 +3,7 @@
 
 import os
 import sys
+import webbrowser
 from pyrevit import forms, script
 sys.path.append(os.path.dirname(__file__))
 from structure.root import lan_path, usermanual_icon
@@ -22,5 +23,6 @@ if not os.path.exists(html_file):
 # Output window 
 output.set_icon(usermanual_icon())
 output.set_title(str_1(lan))
-output.open_page(html_file)
+webbrowser.open(html_file)
+
 
