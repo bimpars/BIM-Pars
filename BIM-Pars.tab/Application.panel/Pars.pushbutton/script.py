@@ -23823,16 +23823,33 @@ class BIMPARS_APP(Form):
                                             element_names_noduplicate = ', '.join(set(elem.Name for elem in invalid_elements))
                                             message = str_8(lan).format(parameter_name, element_names_noduplicate,str_9(lan))
                                             self.check_label3.Text = message
-                                        param_type = elements[0].LookupParameter(parameter_name).Definition.ParameterType
+                                        param_type = elements[0].LookupParameter(parameter_name).StorageType
                                         self.c_ptype = [param_type] * len(selection)
                                         self.check_label2.Text = str_10(lan).format(param_type)
-                                        if param_type == DB.ParameterType.YesNo:
+
+                                        if param_type == DB.StorageType.Integer:
+                                            # StorageType.Integer can represent True/False for YesNo parameters
                                             self.Controls.Remove(self.textbox2)
                                             self.Controls.Add(self.radioButton_True)
                                             self.radioButton_True.Enabled = True
                                             self.Controls.Add(self.radioButton_False)
                                             self.radioButton_False.Enabled = True
-                                        elif param_type == DB.ParameterType.Text or param_type == DB.ParameterType.Integer or param_type == DB.ParameterType.Number:
+
+                                        elif param_type == DB.StorageType.String:
+                                            self.Controls.Remove(self.radioButton_True)
+                                            self.Controls.Remove(self.radioButton_False)
+                                            self.Controls.Add(self.textbox2)
+                                            self.textbox2.Enabled = True
+
+                                        elif param_type == DB.StorageType.Double:
+                                            # Double is usually used for decimal numbers
+                                            self.Controls.Remove(self.radioButton_True)
+                                            self.Controls.Remove(self.radioButton_False)
+                                            self.Controls.Add(self.textbox2)
+                                            self.textbox2.Enabled = True
+
+                                        elif param_type == DB.StorageType.ElementId:
+                                            # Usually references an element, treat like text input or as needed
                                             self.Controls.Remove(self.radioButton_True)
                                             self.Controls.Remove(self.radioButton_False)
                                             self.Controls.Add(self.textbox2)
@@ -23865,86 +23882,64 @@ class BIMPARS_APP(Form):
                                         parameter_name = self.textbox1.Text
                                         selection = __revit__.ActiveUIDocument.Selection.GetElementIds()
                                         doc = __revit__.ActiveUIDocument.Document
-                                        self.c1 = int_ids(selection, doc)  
+                                        self.c1 = int_ids(selection, doc)
                                         self.c_names = c_name(self.c1, doc)
                                         self.c2 = p_values(selection, parameter_name, doc)
                                         self.check_label2.Text = str_19(lan)
+
+                                        elements = [doc.GetElement(eid) for eid in selection]
+                                        if len(selection) == 0:
+                                            import sys
+                                            sys.exit()
+
                                         if self.textbox2.Text:
-                                            try:
-                                                value = self.textbox2.Text
-                                                try:
-                                                    print(pvset_text(parameter_name, value))
-                                                except:
-                                                    pass
+                                            value = self.textbox2.Text
+                                            with DB.Transaction(doc, "Set Parameter Value") as trans:
+                                                trans.Start()
+                                                for element in elements:
+                                                    param = element.LookupParameter(parameter_name)
+                                                    if param is None:
+                                                        continue
+                                                    stype = param.StorageType
+                                                    if stype == DB.StorageType.Integer:
+                                                        try:
+                                                            param.Set(int(value))
+                                                        except:
+                                                            pass
+                                                    elif stype == DB.StorageType.Double:
+                                                        try:
+                                                            param.Set(float(value))
+                                                        except:
+                                                            pass
+                                                    elif stype == DB.StorageType.String:
+                                                        param.Set(value)
+                                                    elif stype == DB.StorageType.ElementId:
+                                                        try:
+                                                            elem_id = DB.ElementId(int(value))
+                                                            param.Set(elem_id)
+                                                        except:
+                                                            pass
+                                                trans.Commit()
 
-                                            except StopIteration:
-                                                pass
-                                            except Exception:
-                                                pass
-                                            except SystemExit:
-                                                from pyrevit import forms
-                                                forms.alert(str_11(lan))
-                                                pass
+                                        elif self.radioButton_True.Checked or self.radioButton_False.Checked:
+                                            val = self.radioButton_True.Checked  # True if True checked, else False
+                                            with DB.Transaction(doc, "Set Yes/No Parameter") as trans:
+                                                trans.Start()
+                                                for element in elements:
+                                                    param = element.LookupParameter(parameter_name)
+                                                    if param is None:
+                                                        continue
+                                                    if param.StorageType == DB.StorageType.Integer:
+                                                        # Assume integer storage type means YesNo param here
+                                                        param.Set(1 if val else 0)
+                                                trans.Commit()
 
-                                        if self.radioButton_True.Checked:
                                             self.check_label2.Text = str_20(lan)
-                                            import Autodesk.Revit.DB as DB
-                                            from pyrevit import forms
-                                            try:
-                                                elements = [doc.GetElement(element_id) for element_id in selection]
-                                                if len(selection) == 0:
-                                                    sys.exit()
-                                                with DB.Transaction(doc, 'Set Parameter Value True') as transT:
-                                                    transT.Start()
-                                                    for element in elements:
-                                                        paramT = element.LookupParameter(parameter_name)
-                                                        if paramT is None:
-                                                            continue
-                                                        if paramT.Definition.ParameterType == DB.ParameterType.YesNo:
-                                                            paramT.Set(True)
-                                                    transT.Commit()
 
-                                            except StopIteration:
-                                                pass
-                                            except Exception:
-                                                pass
-                                            except SystemExit:
-                                                from pyrevit import forms
-                                                forms.alert(str_11(lan))
-                                                pass
-
-                                        if self.radioButton_False.Checked:
-                                            self.check_label2.Text = str_20(lan)
-                                            import Autodesk.Revit.DB as DB
-                                            from pyrevit import forms
-                                            try:
-                                                elements = [doc.GetElement(element_id) for element_id in selection]
-                                                if len(selection) == 0:
-                                                    sys.exit()
-                                                with DB.Transaction(doc, 'Set Parameter Value False') as trans:
-                                                    trans.Start()
-                                                    for element in elements:
-                                                        param = element.LookupParameter(parameter_name)
-                                                        if param is None:
-                                                            continue
-                                                        if param.Definition.ParameterType == DB.ParameterType.YesNo:
-                                                            param.Set(False)
-                                                    trans.Commit()
-
-                                            except StopIteration:
-                                                pass
-                                            except Exception:
-                                                pass
-                                            except SystemExit:
-                                                from pyrevit import forms
-                                                forms.alert(str_11(lan))
-                                                pass
-
-                                        # [SCRIPT:GENERATE_REPORT] Generate report
-                                        c3 = p_values(selection, parameter_name, doc)  
+                                        c3 = p_values(selection, parameter_name, doc)
                                         self.columns = [str_14(lan), str_22(lan), str_23(lan), str_24(lan), str_15(lan), str_16(lan)]
-                                        self.c_parameter = [parameter_name] * len(c3) 
-                                        self.c3 = c3  
+                                        self.c_parameter = [parameter_name] * len(c3)
+                                        self.c3 = c3
                                         self.Close()
 
                                     except StopIteration:
