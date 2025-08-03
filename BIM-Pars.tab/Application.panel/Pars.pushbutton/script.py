@@ -24930,53 +24930,55 @@ class BIMPARS_APP(Form):
                                         self.label8.Text = str_29(lan)
                                         forms.alert(message)
                                         return
-                                    param_type = elements[0].LookupParameter(parameter_name).Definition.ParameterType
+                                    param_type = elements[0].LookupParameter(parameter_name).StorageType
                                     self.c_ptype = [param_type]*len(selection)
 
                                     # [SCRIPT:HANDLE_YESNO_PARAMETER] Handle Yes/No parameter type
-                                    if param_type == DB.ParameterType.YesNo:
+                                    if param_type == DB.StorageType.Integer:
                                         value = self.label6.Text
                                         if value == "1":
                                             with DB.Transaction(doc, 'Set Parameter Value True') as transT:
-                                                        transT.Start()
-                                                        for element in elements:
-                                                            paramT = element.LookupParameter(parameter_name)
-                                                            if paramT is None:
-                                                                continue
-                                                            if paramT.Definition.ParameterType == DB.ParameterType.YesNo:
-                                                                paramT.Set(True)
-                                                        transT.Commit()
-                                                        
-                                                        c3 = p_values(selection, parameter_name, doc)
-                                                        title = str_13(lan)
-                                                        columns = [str_14(lan), str_15(lan), str_16(lan)]
-                                                        output.print_image(excel_list_sym())
-                                                        output.print_code(str_17(lan)+ parameter_name)
-                                                        typ= str(param_type)
-                                                        output.print_code(str_18(lan) + typ)
-                                                        print_table_from_lists(c1, c2, c3, columns, title)
-                                                        self.Close()
+                                                transT.Start()
+                                                for element in elements:
+                                                    paramT = element.LookupParameter(parameter_name)
+                                                    if paramT is None:
+                                                        continue
+                                                    if paramT.StorageType == DB.StorageType.Integer:
+                                                        paramT.Set(1)
+                                                transT.Commit()
+
+                                                c3 = p_values(selection, parameter_name, doc)
+                                                title = str_13(lan)
+                                                columns = [str_14(lan), str_15(lan), str_16(lan)]
+                                                output.print_image(excel_list_sym())
+                                                output.print_code(str_17(lan) + parameter_name)
+                                                typ = str(param_type)
+                                                output.print_code(str_18(lan) + typ)
+                                                print_table_from_lists(c1, c2, c3, columns, title)
+                                                self.Close()
+
                                         elif value == "0":
-                                            with DB.Transaction(doc, 'Set Parameter Value True') as transT:
-                                                        transT.Start()
-                                                        for element in elements:
-                                                            paramT = element.LookupParameter(parameter_name)
-                                                            if paramT is None:
-                                                                continue
-                                                            if paramT.Definition.ParameterType == DB.ParameterType.YesNo:
-                                                                paramT.Set(False)
-                                                        transT.Commit()
-                                                        
-                                                        c3 = p_values(selection, parameter_name, doc)
-                                                        self.c3 = c3
-                                                        title = str_13(lan)
-                                                        columns = [str_14(lan), str_15(lan), str_16(lan)]
-                                                        output.print_image(excel_list_sym())
-                                                        output.print_code(str_17(lan)+ parameter_name)
-                                                        typ= str(param_type)
-                                                        output.print_code(str_18(lan) + typ)
-                                                        print_table_from_lists(c1, c2, c3, columns, title)
-                                                        self.Close()
+                                            with DB.Transaction(doc, 'Set Parameter Value False') as transT:
+                                                transT.Start()
+                                                for element in elements:
+                                                    paramT = element.LookupParameter(parameter_name)
+                                                    if paramT is None:
+                                                        continue
+                                                    if paramT.StorageType == DB.StorageType.Integer:
+                                                        paramT.Set(0)
+                                                transT.Commit()
+
+                                                c3 = p_values(selection, parameter_name, doc)
+                                                self.c3 = c3
+                                                title = str_13(lan)
+                                                columns = [str_14(lan), str_15(lan), str_16(lan)]
+                                                output.print_image(excel_list_sym())
+                                                output.print_code(str_17(lan) + parameter_name)
+                                                typ = str(param_type)
+                                                output.print_code(str_18(lan) + typ)
+                                                print_table_from_lists(c1, c2, c3, columns, title)
+                                                self.Close()
+
                                         self.label8.Text = str_25(lan)
                                         return
 
@@ -24987,15 +24989,16 @@ class BIMPARS_APP(Form):
                                     dialog.TitleAutoPrefix = False
                                     dialog.AllowCancellation = True
                                     dialog.CommonButtons = TaskDialogCommonButtons.Cancel
-                                    dialog.AddCommandLink(TaskDialogCommandLinkId.CommandLink1,str_11(lan),)
+                                    dialog.AddCommandLink(TaskDialogCommandLinkId.CommandLink1, str_11(lan))
                                     result = dialog.Show()
+
                                     if result == TaskDialogResult.Cancel:
                                         forms.alert(str_7(lan))
                                         return
 
                                     # [SCRIPT:HANDLE_PARAMETER_TYPES] Handle other parameter types
                                     if result == TaskDialogResult.CommandLink1:
-                                        if param_type in {DB.ParameterType.Text, DB.ParameterType.Integer, DB.ParameterType.Number}:
+                                        if param_type in {DB.StorageType.String, DB.StorageType.Integer, DB.StorageType.Double, DB.StorageType.ElementId}:
                                             while True:
                                                 value = self.label6.Text
                                                 if value is None:
@@ -25004,7 +25007,7 @@ class BIMPARS_APP(Form):
                                                 try:
                                                     with DB.Transaction(doc, 'Set Parameter Value') as trans:
                                                         trans.Start()
-                                                        valid_value = True 
+                                                        valid_value = True
                                                         for element in elements:
                                                             param = element.LookupParameter(parameter_name)
                                                             if param is None:
@@ -25026,29 +25029,22 @@ class BIMPARS_APP(Form):
                                                                     valid_value = False
                                                                     break
                                                             elif param.StorageType == DB.StorageType.ElementId:
-                                                                self.label8.Text = str_21(lan)
-                                                                pass
-                                                            elif param.StorageType == DB.StorageType.Boolean:
                                                                 try:
-                                                                    param.Set(bool(value))
-                                                                except ValueError:
-                                                                    self.label8.Text = str_22(lan)
+                                                                    param.Set(DB.ElementId(int(value)))
+                                                                except:
+                                                                    self.label8.Text = str_21(lan)
                                                                     valid_value = False
                                                                     break
-                                                            elif param.StorageType == DB.StorageType.None:
-                                                                self.label8.Text = str_23(lan)
-                                                                pass
                                                         if valid_value:
                                                             trans.Commit()
-                                                            
                                                             c3 = p_values(selection, parameter_name, doc)
                                                             self.c3 = c3
-                                                            self.columns = [str_14(lan),str_30(lan), str_31(lan), str_32(lan), str_15(lan), str_16(lan)]
+                                                            self.columns = [str_14(lan), str_30(lan), str_31(lan), str_32(lan), str_15(lan), str_16(lan)]
                                                             self.Close()
-                                                            break  
+                                                            break
                                                         else:
                                                             trans.RollBack()
-                                                            break  
+                                                            break
                                                 except Exception as ex:
                                                     forms.alert(str_24(lan).format(ex))
                                                     return
