@@ -25140,10 +25140,10 @@ class BIMPARS_APP(Form):
                     from System import Array
                     from System.Collections.Generic import List
                     import Autodesk.Revit.DB as DB
-                    from Autodesk.Revit.DB import ElementId, Transaction, StorageType, BuiltInCategory, FilteredElementCollector, ElementCategoryFilter, ElementId, ParameterType, Family
+                    from Autodesk.Revit.DB import ElementId, Transaction, StorageType, BuiltInCategory, FilteredElementCollector, ElementCategoryFilter, ElementId, Family
                     from RevitServices.Persistence import DocumentManager
                     from Autodesk.Revit.UI import (TaskDialog)
-                    from Autodesk.Revit.DB import BuiltInCategory, FilteredElementCollector, ElementCategoryFilter, ElementId, ParameterType
+                    from Autodesk.Revit.DB import BuiltInCategory, FilteredElementCollector, ElementCategoryFilter, ElementId
                     from Autodesk.Revit.UI import (TaskDialog, TaskDialogCommonButtons,TaskDialogCommandLinkId, TaskDialogResult)
                     import codecs
                     import xlrd
