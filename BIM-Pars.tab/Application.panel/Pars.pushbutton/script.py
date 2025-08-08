@@ -30384,7 +30384,7 @@ class BIMPARS_APP(Form):
                                             self.c_ptype = [param_type]*len(selection)
 
                                             # [SCRIPT:VALIDATION] Check if parameter is boolean
-                                            if param_type == DB.ParameterType.YesNo:
+                                            if param_type == DB.StorageType.Integer:
                                                 forms.alert(str_15(lan))
                                             else:
                                                 while True:
@@ -30503,7 +30503,7 @@ class BIMPARS_APP(Form):
                                             self.c_ptype = [param_type]*len(selection)
 
                                             # [SCRIPT:VALIDATION] Check if parameter is boolean
-                                            if param_type == DB.ParameterType.YesNo:
+                                            if param_type == DB.StorageType.Integer:
                                                 forms.alert(str_15(lan))
                                             else:
                                                 if prefix is None:
@@ -30608,7 +30608,7 @@ class BIMPARS_APP(Form):
                                             self.c_ptype = [param_type]*len(selection)
  
                                             # [SCRIPT:VALIDATION] Check if parameter is boolean
-                                            if param_type == DB.ParameterType.YesNo:
+                                            if param_type == DB.StorageType.Integer:
                                                 forms.alert(str_15(lan))
                                             else:
                                                 if suffix is None:
