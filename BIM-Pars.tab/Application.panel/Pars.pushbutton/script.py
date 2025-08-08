@@ -31459,7 +31459,7 @@ class BIMPARS_APP(Form):
                         # [SCRIPT:VALIDATION] Check parameter type
                         for element in selection:
                             paramT = element.LookupParameter(parameter_name)
-                        if paramT.Definition.ParameterType == DB.ParameterType.YesNo:
+                        if paramT.StorageType == DB.StorageType.Integer:
                             try:
                                 # [SCRIPT:DATA_PREPARATION] Prepare data for reporting
                                 element_param_values = {}
