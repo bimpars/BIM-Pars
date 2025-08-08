@@ -439,7 +439,7 @@ def double_input_plusnote_dynamiclabel(icon_path, search_image_path, ok_icon_pat
                     forms.alert(message)
                     self.Close()
                 else:
-                    self.param_type = elements[0].LookupParameter(parameter_name).Definition.ParameterType 
+                    self.param_type = elements[0].LookupParameter(parameter_name).StorageType
                                      
                     self.label4.Text = str(self.param_type)
 
@@ -630,7 +630,7 @@ def double_input_plusnote_dynamiclabel2(icon_path, search_image_path, ok_icon_pa
                     forms.alert(message)
                     self.Close()
                 else:
-                    self.param_type = elements[0].LookupParameter(parameter_name).Definition.ParameterType 
+                    self.param_type = elements[0].LookupParameter(parameter_name).StorageType
                                      
                     self.label4.Text = str(self.param_type)
 
