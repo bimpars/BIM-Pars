@@ -26454,7 +26454,7 @@ class BIMPARS_APP(Form):
                                                 if element is not None:
                                                     param = element.LookupParameter(parameter_name)
                                                     if param is not None:
-                                                        param_type = param.Definition.ParameterType
+                                                        param_type = param.StorageType
                                                         self.dataGridView_element_list.Rows[row_idx].Cells[3].Value = str(param_type)
                                                     else:
                                                         self.dataGridView_element_list.Rows[row_idx].Cells[3].Value = str_26(lan)
@@ -26999,7 +26999,7 @@ class BIMPARS_APP(Form):
                                                 if element:
                                                     param = element.LookupParameter(parameter_name)
                                                     if param:
-                                                        param_type = param.Definition.ParameterType
+                                                        param_type = param.StorageType
                                                         self.dataGridView_category.Rows[row_idx].Cells[3].Value = str(param_type)
                                                     else:
                                                         self.dataGridView_category.Rows[row_idx].Cells[3].Value = str_26(lan)
@@ -27142,7 +27142,7 @@ class BIMPARS_APP(Form):
                                                 if element:
                                                     param = element.LookupParameter(parameter_name)
                                                     if param:
-                                                        param_type = param.Definition.ParameterType
+                                                        param_type = param.StorageType
                                                         
                                                         self.dataGridView_category.Rows[row_idx].Cells[3].Value = str(param_type)
                                                     else:
