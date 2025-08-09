@@ -20913,7 +20913,9 @@ class BIMPARS_APP(Form):
                         if selection.Count > 0:
                             try:
                                 # [SCRIPT:GET_PARAMETER_MAPS] Retrieve instance and type parameters
-                                instance_dict, type_dict = map(selection[0])
+                                instance_dict, type_dict = map(selection[0]) or ({}, {})
+                                instance_dict = instance_dict or {}
+                                type_dict = type_dict or {}
                                 
                                 # [SCRIPT:PREPARE_DATA] Prepare data for the report
                                 all_data = []
