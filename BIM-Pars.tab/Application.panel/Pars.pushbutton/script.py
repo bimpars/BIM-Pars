@@ -20921,26 +20921,28 @@ class BIMPARS_APP(Form):
                                 all_data = []
                                 
                                 # [SCRIPT:ADD_INSTANCE_PARAMETERS] Add instance parameters to report data
-                                for param_name, values in instance_dict.items():
-                                    if len(values) >= 3:
-                                        all_data.append([
-                                            str_3(lan),       
-                                            str(param_name),  
-                                            str(values[0]),   
-                                            str(values[1]),   
-                                            str(values[2])    
-                                        ])
-                                
+                                if instance_dict:
+                                    for param_name, values in instance_dict.items():
+                                        if len(values) >= 3:
+                                            all_data.append([
+                                                str_3(lan),       
+                                                str(param_name),  
+                                                str(values[0]),   
+                                                str(values[1]),   
+                                                str(values[2])    
+                                            ])
+                                    
                                 # [SCRIPT:ADD_TYPE_PARAMETERS] Add type parameters to report data
-                                for param_name, values in type_dict.items():
-                                    if len(values) >= 3:
-                                        all_data.append([
-                                            str_8(lan),       
-                                            str(param_name),  
-                                            str(values[0]),   
-                                            str(values[1]),   
-                                            str(values[2])    
-                                        ])
+                                if type_dict:
+                                    for param_name, values in type_dict.items():
+                                        if len(values) >= 3:
+                                            all_data.append([
+                                                str_8(lan),       
+                                                str(param_name),  
+                                                str(values[0]),   
+                                                str(values[1]),   
+                                                str(values[2])    
+                                            ])
                                 
                                 # [SCRIPT:TRANSFORM_DATA] Transform data into columns for create_report_tab
                                 headers = ["Parameter Category", str_4(lan), str_5(lan), str_6(lan), str_7(lan)]
